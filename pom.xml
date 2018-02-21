@@ -10,6 +10,10 @@
     <properties>
         <java.version>1.8</java.version>
         <activemq.version>5.15.3</activemq.version>
+        <maven.test.skip>true</maven.test.skip>
+		<colmeia_war-artifactId>colmeia_war</colmeia_war-artifactId>
+		<current-versao>current</current-versao>
+		<colmeia-versao>1.0.0.01</colmeia-versao>
     </properties>
 
     <parent>
@@ -100,6 +104,15 @@
             <artifactId>spring-boot-starter-mail</artifactId>
             <version>1.4.3.RELEASE</version>
         </dependency>
+        <dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+			<groupId>confesol</groupId>
+			<artifactId>framework-colmeia</artifactId>
+			<version>${current-versao}</version>
+		</dependency>
     </dependencies>
 
     <build>
