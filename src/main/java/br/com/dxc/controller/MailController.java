@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import br.com.cresol.colmeia.core.exception.ApplicationException;
 import br.com.dxc.dto.MailDTO;
 import br.com.dxc.mail.MailServer;
 
@@ -21,21 +20,21 @@ public class MailController {
 	public MailServer mailServer;
 
 	@RequestMapping(value = "/sendTest", method = RequestMethod.GET)
-	public String createMail() throws ApplicationException {
-		mailServer.sendSimpleMessage("ezekii.post@gmail.com", "teste", "aeHOO");
+	public String createMail() {
+		mailServer.sendSimpleMessage("robsonduarteg@gmail.com", null, "aeHOO");
 
 		return "redirect:/dxc";
 	}
 
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
-	public String createMail(Model model, @ModelAttribute("mailObject") @Valid MailDTO mailDTO) throws ApplicationException {
+	public String createMail(Model model, @ModelAttribute("mailObject") @Valid MailDTO mailDTO) {
 		this.mailServer.sendSimpleMessage(mailDTO.getTo(), mailDTO.getSubject(), mailDTO.getText());
 		return "ok";
 
 	}
 
 	@RequestMapping(value = "/sendAttachment", method = RequestMethod.POST)
-	public String createMailWithAttachment(Model model, @ModelAttribute("mailObject") @Valid MailDTO mailDTO) throws ApplicationException {
+	public String createMailWithAttachment(Model model, @ModelAttribute("mailObject") @Valid MailDTO mailDTO) {
 		this.mailServer.sendMessageWithAttachment(mailDTO.getTo(), mailDTO.getSubject(), mailDTO.getText(),
 				mailDTO.getAttachmentPath());
 		return "ok";
