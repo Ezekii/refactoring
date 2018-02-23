@@ -1,4 +1,4 @@
-package br.com.dxc.jms.producer;
+package br.com.dxc.core.jms.producer;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,7 +8,7 @@ import org.springframework.jms.connection.CachingConnectionFactory;
 import org.springframework.jms.core.JmsTemplate;
 
 @Configuration
-public class SenderConfig {
+public class JMSSenderConfig {
 
 	@Value("${spring.activemq.broker-url}")
 	private String brokerUrl;
@@ -32,7 +32,7 @@ public class SenderConfig {
 	}
 	
 	@Bean
-	public Sender sender() {
-		return new Sender();
+	public JMSSender sender() {
+		return new JMSSender();
 	}
 }

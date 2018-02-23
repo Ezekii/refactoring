@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import br.com.dxc.jms.producer.Sender;
+import br.com.dxc.core.jms.producer.JMSSender;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -33,7 +33,7 @@ public class SpringJmsApplicationTest {
 	public static EmbeddedActiveMQBroker broker = new EmbeddedActiveMQBroker();
 	
 	@Autowired
-	private Sender sender;
+	private JMSSender sender;
 	
 	@Test
 	public void testReceive() throws Exception {

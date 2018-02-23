@@ -1,4 +1,4 @@
-package br.com.dxc.jms.consumer;
+package br.com.dxc.core.jms.consumer;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,7 +9,7 @@ import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 
 @Configuration
 @EnableJms
-public class ReceiverConfig {
+public class BaseJMSReceiverConfig {
 
 	@Value("${spring.activemq.broker-url}")
 	private String brokerUrl;
@@ -31,8 +31,8 @@ public class ReceiverConfig {
 		return factory;
 	}
 	
-	@Bean
-	public Receiver receiver() {
-		return new Receiver();
-	}
+//	@Bean
+//	public BaseJMSReceiver receiver() {
+//		return new BaseJMSReceiver();
+//	}
 }

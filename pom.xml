@@ -12,6 +12,9 @@
         <java.version>1.8</java.version>
         <activemq.version>5.15.3</activemq.version>
         <maven.test.skip>true</maven.test.skip>
+		<current-versao>current</current-versao>
+		<google.zxing.version>3.3.2</google.zxing.version>
+		<quartz.version>2.1.7</quartz.version>
     </properties>
 
     <parent>
@@ -116,7 +119,36 @@
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
 		</dependency>
-		
+		<dependency>
+		    <groupId>com.google.zxing</groupId>
+		    <artifactId>core</artifactId>
+		    <version>${google.zxing.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.zxing</groupId>
+		    <artifactId>javase</artifactId>
+		    <version>${google.zxing.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.quartz-scheduler</groupId>
+		    <artifactId>quartz</artifactId>
+		    <version>${quartz.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>javax.xml</groupId>
+		    <artifactId>jaxrpc-api</artifactId>
+		    <version>1.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.axis</groupId>
+		    <artifactId>axis</artifactId>
+		    <version>1.4</version>
+		</dependency>
+		<dependency>
+		    <groupId>wsdl4j</groupId>
+		    <artifactId>wsdl4j</artifactId>
+		    <version>1.6.3</version>
+		</dependency>
     </dependencies>
 
     <build>
