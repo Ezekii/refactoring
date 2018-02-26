@@ -3,6 +3,10 @@ package br.com.dxc.util;
 import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
+import org.apache.axis.utils.StringUtils;
+import org.springframework.util.ObjectUtils;
+
+
 public class MessagesUtils {
 
     private static final String BUNDLE_NAME = "messages";
@@ -16,9 +20,8 @@ public class MessagesUtils {
 
     private static String  validarMensagem(String key){
         String msg = RESOURCE_BUNDLE.getString(key);
-
         // Se for null ou vazio, mostra a propria chave
-        if (msg == null || msg.length() == 0) {
+        if (StringUtils.isEmpty(msg)) {
             msg = key;
         }
 
@@ -39,7 +42,7 @@ public class MessagesUtils {
     public static String getMessage(String key, Object... params) {
         validarKey(key);
         try {
-            return (params != null && params.length > 0) ? MessageFormat.format(validarMensagem(key), params) : getMessage(key);
+            return !ObjectUtils.isEmpty(params) ? MessageFormat.format(validarMensagem(key), params) : getMessage(key);
         } catch (Exception e) {
             // Se não houver messagem correspondente em algum message bundle lança a string do exception code mesmo.
             return key;

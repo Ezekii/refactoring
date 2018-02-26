@@ -22,7 +22,6 @@
 //import javax.xml.validation.SchemaFactory;
 //import javax.xml.validation.Validator;
 //
-//import org.apache.commons.lang.StringUtils;
 //import org.jdom.Document;
 //import org.jdom.Element;
 //import org.jdom.Namespace;
@@ -34,6 +33,7 @@
 //import br.com.cresol.colmeia.core.conf.AppConfig;
 //import br.com.cresol.colmeia.core.exception.ApplicationException;
 //import br.com.cresol.colmeia.core.exception.ColmeiaException;
+//import br.com.dxc.exception.BusinessValidatorException;
 //
 //public class XMLUtil {
 //
@@ -49,7 +49,7 @@
 //	 * @throws Exception
 //	 */
 //	public Collection<XsdBean> pesquisarCamposXSD(StringReader conteudo)
-//			throws ColmeiaException, ApplicationException, Exception {
+//			throws BusinessValidatorException, Exception {
 //
 //		SAXBuilder builder = new SAXBuilder();
 //
@@ -95,8 +95,7 @@
 //	 * @throws ApplicationException
 //	 */
 //	@SuppressWarnings("rawtypes")
-//	public Object passarXML4Object(String xml, Class classe)
-//			throws ApplicationException {
+//	public Object passarXML4Object(String xml, Class classe) throws BusinessValidatorException {
 //
 //		try {
 //			JAXBContext context = JAXBContext.newInstance(classe);

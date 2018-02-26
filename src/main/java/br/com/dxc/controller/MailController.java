@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import br.com.dxc.core.mail.MailServer;
 import br.com.dxc.dto.MailDTO;
-import br.com.dxc.mail.MailServer;
 
 @Controller
 @RequestMapping("/mail")

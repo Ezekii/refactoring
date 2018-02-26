@@ -8,7 +8,8 @@ public enum ApplicationBusinessExceptionCode implements ExceptionCode {
       CRESOL_ERROR_SEND_MESSAGE("1001", Severity.ERROR),
       CRESOL_ERROR_SEND_MESSAGE_PARAMETER("1002", Severity.ERROR),
       CRESOL_ERROR_SEND_MESSAGE_PATH_TO_ATTACHMENT("1003", Severity.ERROR),
-      CRESOL_LOG_SEND_MESSAGE("1004", Severity.INFO)
+      CRESOL_LOG_SEND_MESSAGE("1004", Severity.INFO),
+      CRESOL_ERROR_CERTIFICADO_DIGITAL("1005", Severity.ERROR)
     ;
 
 
