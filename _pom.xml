@@ -15,7 +15,6 @@
 		<current-versao>current</current-versao>
 		<google.zxing.version>3.3.2</google.zxing.version>
 		<quartz.version>2.1.7</quartz.version>
-		<hikariCP.version>2.7.6</hikariCP.version>
     </properties>
 
     <parent>
@@ -102,26 +101,20 @@
             <artifactId>spring-boot-starter-mail</artifactId>
             <version>1.4.3.RELEASE</version>
         </dependency>
-        <dependency>
-        	<groupId>org.springframework.boot</groupId>
-        	<artifactId>spring-boot-starter-data-jpa</artifactId>
-        	<exclusions>
-                <exclusion>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-core</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-core</artifactId>
-		    <version>5.2.13.Final</version>
-		</dependency>
-		<dependency>
-		  <groupId>org.postgresql</groupId>
-		  <artifactId>postgresql</artifactId>
-		  <version>9.3-1100-jdbc41</version>
-		</dependency>
+<!--         <dependency> -->
+<!--         	<groupId>org.springframework.boot</groupId> -->
+<!--         	<artifactId>spring-boot-starter-data-jpa</artifactId> -->
+<!--         </dependency> -->
+<!--         <dependency> -->
+<!-- 			<groupId>mysql</groupId> -->
+<!-- 			<artifactId>mysql-connector-java</artifactId> -->
+<!-- 		</dependency> -->
+		
+<!-- 		<dependency> -->
+<!-- 		    <groupId>postgresql</groupId> -->
+<!-- 		    <artifactId>postgresql</artifactId> -->
+<!-- 		    <version>9.1-901-1.jdbc4</version> -->
+<!-- 		</dependency> -->
 		<dependency>
 		    <groupId>org.json</groupId>
 		    <artifactId>json</artifactId>
@@ -161,12 +154,8 @@
 		    <artifactId>commons-codec</artifactId>
 		    <version>1.11</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/br.com.caelum.stella/caelum-stella-core -->
 		<dependency>
-            <groupId>com.zaxxer</groupId>
-            <artifactId>HikariCP</artifactId>
-            <version>${hikariCP.version}</version>
-        </dependency>        
-        <dependency>
 		    <groupId>br.com.caelum.stella</groupId>
 		    <artifactId>caelum-stella-core</artifactId>
 		    <version>2.1.2</version>
@@ -187,6 +176,8 @@
 		    <artifactId>commons-net</artifactId>
 		    <version>3.3</version>
 		</dependency>
+		
+
     </dependencies>
 
     <build>
