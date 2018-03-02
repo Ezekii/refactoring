@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:batch="http://www.springframework.org/schema/batch"
+       xsi:schemaLocation="http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+        				   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- BATCH CONFIGURATION -->
+    <bean id="jobRepository" class="org.springframework.batch.core.repository.support.JobRepositoryFactoryBean">
+        <property name="isolationLevelForCreate" value="ISOLATION_DEFAULT"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="transactionManager" ref="transactionManager"/>
+    </bean>
+
+    <bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor">
+    </bean>
+
+    <bean id="jobExplorer" class="org.springframework.batch.core.explore.support.JobExplorerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="taskExecutor" ref="taskExecutor"/>
+    </bean>
+
+    <bean id="jobRegistry" class="org.springframework.batch.core.configuration.support.MapJobRegistry">
+    </bean>
+
+    <bean id="jobOperator" class="org.springframework.batch.core.launch.support.SimpleJobOperator">
+        <property name="jobExplorer" ref="jobExplorer"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobRegistry" ref="jobRegistry"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>
+
+    <bean class="org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor">
+        <property name="jobRegistry" ref="jobRegistry"/>
+    </bean>
+
+
+    <!-- BEANS CONFIGURATION -->
+    <bean id="alwaysSkipItemSkipPolicy" class="org.springframework.batch.core.step.skip.AlwaysSkipItemSkipPolicy">
+    </bean>
+
+    <bean id="batchRetryPolicy" class="br.com.dxc.batch.BatchRetryPolicy">
+    </bean>
+
+    <bean id="cargaJobListener" class="br.com.dxc.batch.CargaJobListener" scope="step">
+    </bean>
+
+    <bean id="lockListener" class="br.com.dxc.batch.LockListener" scope="job">
+    </bean>
+
+    <bean id="globalListener" class="br.com.dxc.batch.GlobalListener">
+    </bean>
+
+    <batch:job id="BASE_JOB" abstract="true">
+        <batch:listeners>
+            <batch:listener ref="lockListener"/>
+        </batch:listeners>
+    </batch:job>
+
+
+    <!-- JOB CONFIGURATION -->
+    <batch:job id="GLOBAL_JOB">
+
+        <batch:step id="GLOBAL_TESTE_STEP" next="GLOBAL_GLOBAL_STEP">
+            <batch:tasklet ref="testeTasklet"/>
+        </batch:step>
+
+		<!-- GLOBAL_GLOBAL_STEP sempre tem que ser rodado por ultimo.  -->
+        <batch:step id="GLOBAL_GLOBAL_STEP">
+            <batch:tasklet ref="globalTasklet"/>
+        </batch:step>
+
+        <batch:listeners>
+            <batch:listener ref="lockListener"/>
+            <batch:listener ref="globalListener"/>
+        </batch:listeners>
+
+    </batch:job>
+
+    <!-- #####################################################################################################################################-->
+
+</beans>
