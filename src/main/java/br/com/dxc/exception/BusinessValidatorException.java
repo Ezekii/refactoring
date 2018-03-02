@@ -17,6 +17,10 @@ public class BusinessValidatorException extends RuntimeException {
     public BusinessValidatorException(final JSONException e) {
         super(e);
     }
+    
+    public BusinessValidatorException(final String message) {
+        super(message);
+    }
 
     public BusinessValidatorException(ExceptionCode code, Object... params) {
         super(Severity.ERROR.name() + ":" + MessagesUtils.getMessage(code.toString(), params));
