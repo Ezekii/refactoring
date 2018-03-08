@@ -1,11 +1,5 @@
 package br.com.dxc.util;
 
-import org.joda.time.LocalDate;
-import org.joda.time.LocalDateTime;
-import org.joda.time.LocalTime;
-import org.springframework.util.StringUtils;
-
-import javax.swing.text.MaskFormatter;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -15,6 +9,13 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import javax.swing.text.MaskFormatter;
+
+import org.apache.commons.lang.StringUtils;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+import org.joda.time.LocalTime;
 
 public abstract class MaskUtils {
 
@@ -141,7 +142,7 @@ public abstract class MaskUtils {
 	public static String formataNumeroContratoEmprestimo(String numeroContrato) {
 		String numeroContratoFormatado = null;
 
-		if (StringUtils.isEmpty(numeroContrato)) {
+		if (StringUtils.isBlank(numeroContrato)) {
 			return "";
 		}
 

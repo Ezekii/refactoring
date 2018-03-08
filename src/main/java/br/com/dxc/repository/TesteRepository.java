@@ -8,7 +8,7 @@ import br.com.dxc.model.Teste;
 
 public interface TesteRepository extends CrudRepository<Teste, Long> {
 
-    List<Teste> findByNome(String nome);
-    
-    List<Teste> findAll();
+	List<Teste> findByNome(String nome);
+
+	List<Teste> findAll();
 }

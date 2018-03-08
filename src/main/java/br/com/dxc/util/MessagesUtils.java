@@ -3,7 +3,7 @@ package br.com.dxc.util;
 import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
-import org.apache.axis.utils.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.util.ObjectUtils;
 
 
@@ -21,7 +21,7 @@ public class MessagesUtils {
     private static String  validarMensagem(String key){
         String msg = RESOURCE_BUNDLE.getString(key);
         // Se for null ou vazio, mostra a propria chave
-        if (StringUtils.isEmpty(msg)) {
+        if (StringUtils.isBlank(msg)) {
             msg = key;
         }
 

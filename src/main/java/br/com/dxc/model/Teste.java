@@ -5,14 +5,13 @@ import javax.persistence.Entity;
 import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
-public class Teste extends BaseEntity{
+public class Teste extends BaseEntity {
 
 	@NotBlank
-    private String nome;
+	private String nome;
 
-    
-    public Teste() {}
-    
+	public Teste() {
+	}
 
 	public String getNome() {
 		return nome;

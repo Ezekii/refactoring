@@ -112,10 +112,20 @@
                 </exclusion>
             </exclusions>
         </dependency>
+<!--         <dependency> -->
+<!-- 		    <groupId>org.springframework.data</groupId> -->
+<!-- 		    <artifactId>spring-data-jpa</artifactId> -->
+<!-- 		    <version>2.0.5.RELEASE</version> -->
+<!-- 		</dependency> -->
         <dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-core</artifactId>
-		    <version>5.2.13.Final</version>
+		    <version>5.2.14.Final</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-entitymanager</artifactId>
+		    <version>5.2.3.Final</version>
 		</dependency>
 		<dependency>
 		  <groupId>org.postgresql</groupId>
@@ -166,11 +176,6 @@
 		    <artifactId>caelum-stella-core</artifactId>
 		    <version>2.1.2</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!-- 			<groupId>gov.pr.celepar</groupId> -->
-<!-- 			<artifactId>framework</artifactId> -->
-<!-- 			<version>2.5.5</version> -->
-<!-- 		</dependency> -->
 
 		<dependency>
 		    <groupId>joda-time</groupId>
@@ -201,6 +206,16 @@
 		    <groupId>org.jdom</groupId>
 		    <artifactId>jdom</artifactId>
 		    <version>2.0.2</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.6</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-lang</groupId>
+		    <artifactId>commons-lang</artifactId>
+		    <version>2.6</version>
 		</dependency>
     </dependencies>
 

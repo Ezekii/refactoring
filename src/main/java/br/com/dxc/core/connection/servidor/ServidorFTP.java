@@ -11,12 +11,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 import org.omg.CORBA.portable.ApplicationException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.util.StringUtils;
 
 import br.com.dxc.dto.FaseExecucaoDTO;
 import br.com.dxc.exception.ApplicationBusinessExceptionCode;
@@ -179,7 +179,7 @@ public class ServidorFTP extends Servidor {
 						try {
 							objeto = new ByteArrayInputStream(anx.getArquivo());
 
-							if (!StringUtils.isEmpty(destino)) {
+							if (!StringUtils.isBlank(destino)) {
 								ftpClient.storeFile(destino + ServidorFTP.FTP_FILE_SEPARATOR + anx.getNome(), objeto);
 							} else {
 								ftpClient.storeFile(anx.getNome(), objeto);

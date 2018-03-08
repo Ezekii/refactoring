@@ -9,9 +9,9 @@ import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.util.StringUtils;
 
 import br.com.caelum.stella.validation.CNPJValidator;
 import br.com.caelum.stella.validation.CPFValidator;
@@ -40,7 +40,7 @@ public class Utils {
 	 * @return valor
 	 */
 	public static Integer stringParaInteger(String valor) {
-		return StringUtils.isEmpty(valor) ? null : new Integer(valor);
+		return StringUtils.isBlank(valor) ? null : new Integer(valor);
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class Utils {
 		try {
 			// Não foi fetio com NumberFormat pois não suporta valores
 			// 99.999.999.999.999,999999
-			if (StringUtils.isEmpty(valor)) {
+			if (StringUtils.isBlank(valor)) {
 				NumberFormat format = DecimalFormat.getInstance(Locale.getDefault());
 				char separadorDecimal = ((DecimalFormat) format).getDecimalFormatSymbols().getDecimalSeparator();
 				char separadorGrupo = ((DecimalFormat) format).getDecimalFormatSymbols().getGroupingSeparator();
@@ -173,12 +173,12 @@ public class Utils {
 		// deve remover a formatacao ja sem o dv devido a possibilidade do dv
 		// ser uma string. Exemplo DV(X). Pode receber como parametro somente o
 		// dv sendo necessario validar o campo apos remocao do mesmo
-		String numeroContaSemDV = StringUtils.isEmpty(numeroContaComDV) ? null
+		String numeroContaSemDV = StringUtils.isBlank(numeroContaComDV) ? null
 				: removeFormatacaoNumero(numeroContaComDV.substring(0, numeroContaComDV.length() - 1));
 
 		// retorna ja convertido para long para evitar excessao de conversao de
 		// tipos
-		return StringUtils.isEmpty(numeroContaSemDV) ? null : Long.parseLong(numeroContaSemDV);
+		return StringUtils.isBlank(numeroContaSemDV) ? null : Long.parseLong(numeroContaSemDV);
 	}
 
 	/**
@@ -393,7 +393,7 @@ public class Utils {
 
 	public static boolean validarCPF(Number cpf) {
 
-		if (StringUtils.isEmpty(cpf.toString()) && new CPFValidator().invalidMessagesFor(cpf.toString()).size() > 0) {
+		if (StringUtils.isBlank(cpf.toString()) && new CPFValidator().invalidMessagesFor(cpf.toString()).size() > 0) {
 			return false;
 		}
 
@@ -402,7 +402,7 @@ public class Utils {
 
 	public static boolean validarCNPJ(Number cnpj) {
 
-		if (StringUtils.isEmpty(cnpj.toString())
+		if (StringUtils.isBlank(cnpj.toString())
 				&& new CNPJValidator().invalidMessagesFor(cnpj.toString()).size() > 0) {
 			return false;
 		}
@@ -476,7 +476,7 @@ public class Utils {
 
 	public static String incrementaString(String texto, int quantidadeIncremento) {
 
-		if (!StringUtils.isEmpty(texto.toLowerCase())) {
+		if (!StringUtils.isBlank(texto.toLowerCase())) {
 
 			char[] textoArr = texto.toLowerCase().toCharArray();
 

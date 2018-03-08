@@ -12,9 +12,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseConfiguration {
 
+//	@Autowired
+//	private EntityManagerFactory entityManagerFactory;
+	
 	@Bean
 	@ConfigurationProperties("spring.datasource")
 	public DataSource dataSource() {
 		return DataSourceBuilder.create().build();
 	}
+	
+//	@Bean
+//	public SessionFactory sessionFactory() {
+//		SessionFactory sessionFactory = entityManagerFactory.unwrap(SessionFactory.class);
+//	    return sessionFactory;
+//	}
 }
