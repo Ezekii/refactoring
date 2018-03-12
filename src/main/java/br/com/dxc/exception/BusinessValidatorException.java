@@ -41,7 +41,11 @@ public class BusinessValidatorException extends RuntimeException {
         this.type = code.getSeverity().getType();
     }
 
-    private static String getMessagem(Severity severity) {
+    public BusinessValidatorException(String e) {
+    	super(e);
+	}
+
+	private static String getMessagem(Severity severity) {
         switch (severity) {
             case WARNING:
                 return "";
